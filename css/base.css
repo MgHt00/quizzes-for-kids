@@ -8,8 +8,11 @@
 
 body {
   background-color: #222222;
-  width: 60%;
-  margin: 30px auto;
+  /*margin: 30px auto;*/
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pacifico-regular, h1 {
@@ -24,27 +27,16 @@ h1 {
 
 .main-container {
   background-color: #ffffff;
-  border-radius: 5px;
-  width: 600px;
-  height: 80vh;
-  margin: 0 auto;
-  padding: 40px 0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
 
-  position: relative;
   background-image: 
-    url(../img/leaves.jpg),
-    url(../img/lamp.jpg),
-    url(../img/china.jpg),
-    url(../img/flowers.jpg);
-  background-position: 
-    top left,
-    top right,
-    bottom left,
-    bottom right;
+    url(../img/lamp.png),
+    url(../img/flowers.png);
   background-repeat: no-repeat;
-  background-size: 
-    25%,
-    35%,
-    35%,
-    75%;
+  background-position:
+    top left,
+    bottom right;
 }
