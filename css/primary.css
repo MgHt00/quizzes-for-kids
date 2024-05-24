@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 /* CSS RESET */
 * {
   margin: 0;
@@ -11,10 +12,24 @@ body {
   margin: 30px auto;
 }
 
+.pacifico-regular, h1 {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  text-align: center;
+}
+
 .main-container {
-  background-color: #fefeff;
+  background-color: #ffffff;
   border-radius: 5px;
+  width: 600px;
   height: 80vh;
+  margin: 0 auto;
+  padding: 40px 0;
+
   position: relative;
   background-image: 
     url(../img/leaves.jpg),
