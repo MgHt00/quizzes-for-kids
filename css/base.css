@@ -41,30 +41,29 @@ h1 {
   padding: 20px;
 }
 
-.swiper {
-  width: 600px;
-  height: 300px;
-  background-color: aliceblue;
-  padding: 0px;
-  color: black;
-}
-
-/*.swiper-slide span {
-  display: block;
-  padding: 30px 50px;
-  background-color: aqua;
-}*/
-
-.swiper-slide {
+.answers-container {
   display: flex;
-  /*align-items: center;
-  justify-content: center;*/
-  background-color: rgb(134, 182, 255);
+  flex-direction: column;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
+.answer-btn {
+  background-color: #61dadc;
+  color: rgb(19, 19, 19);
+  border: none;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #1dbec2;
   color: white;
+  border: none;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .footer {
