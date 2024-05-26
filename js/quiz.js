@@ -3,6 +3,7 @@ const answersContainer = document.querySelector(".answers-container");
 const messageContainer = document.querySelector(".message-container");
 const nextButton = document.querySelector(".next");
 let currentQuestionIndex;
+let previousQuestionIndex;
 
 const questions = [
   { 
@@ -47,11 +48,7 @@ function handleAnswerClick(event) {
 }
 
 function nextButtonClick(event) {
-    // Delete shown questions from `shuffleQuestions` array
-    shuffledQuestions.pop(currentQuestionIndex);
-    console.log(`Length of ShuffledQuestions after one question is displayed: ${shuffledQuestions.length}`);
-
-    randomQuestion();  
+    shuffledQuestions.length === 0 ? finishSession() : randomQuestion();
 }
 
 function randomQuestion() {
@@ -74,6 +71,19 @@ function randomQuestion() {
     answerButton.addEventListener("click", handleAnswerClick);
     answersContainer.append(answerButton);
   }
+
+  // Delete shown questions from `shuffleQuestions` array
+  shuffledQuestions.pop(currentQuestionIndex);
+
+  console.log(`Length of ShuffledQuestions after one question is displayed: ${shuffledQuestions.length}`);
+}
+
+function finishSession() {
+  // Clear previous answers
+  questionContainer.innerHTML = '';
+  answersContainer.innerHTML = '';
+  messageContainer.textContent = "Well done! You've completed all the questions.";
+  console.log("Finish");
 }
 
 randomQuestion();
