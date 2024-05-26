@@ -66,6 +66,16 @@ h1 {
   border-radius: 5px;
 }
 
+.correct {
+  background-color: green;
+  color: white;
+}
+
+.incorrect {
+  background-color: red;
+  color: white;
+}
+
 .footer {
   display: flex;
   justify-content: center;
