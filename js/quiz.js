@@ -47,18 +47,23 @@ function handleAnswerClick(event) {
 }
 
 function nextButtonClick(event) {
-  console.log("next button");
+    // Delete shown questions from `shuffleQuestions` array
+    shuffledQuestions.pop(currentQuestionIndex);
+    console.log(`Length of ShuffledQuestions after one question is displayed: ${shuffledQuestions.length}`);
+
+    randomQuestion();  
 }
 
 function randomQuestion() {
   // Clear previous answers
   answersContainer.innerHTML = '';
 
-  // Select a random question index
+  // Generate a random question index
   currentQuestionIndex = random(0, (shuffledQuestions.length-1));
 
   // Display the question
   questionContainer.textContent = shuffledQuestions[currentQuestionIndex].question;
+  console.log(`Length of ShuffledQuestions: ${shuffledQuestions.length}`);
 
   // Display the answers
   let tempAnswersArray = shuffledQuestions[currentQuestionIndex].answers;
@@ -69,7 +74,6 @@ function randomQuestion() {
     answerButton.addEventListener("click", handleAnswerClick);
     answersContainer.append(answerButton);
   }
-
 }
 
 randomQuestion();
