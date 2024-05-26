@@ -3,7 +3,6 @@ const answersContainer = document.querySelector(".answers-container");
 const messageContainer = document.querySelector(".message-container");
 const nextButton = document.querySelector(".next");
 let currentQuestionIndex;
-let previousQuestionIndex;
 
 const questions = [
   { 
@@ -24,7 +23,7 @@ const questions = [
 ];
 
 // copy questions array to a temporary array
-let shuffledQuestions = questions;
+let shuffledQuestions = [...questions];
 
 const correctMessages = ["Fantastic!", "Awesome!", "Brilliant!", "Great job!", "Excellent!", "Superb!", "Outstanding!"];
 const wrongMessages = ["Almost there!", "Keep going!", "Nice effort!", "Keep practicing!", "Good try!"];
@@ -57,6 +56,7 @@ function randomQuestion() {
 
   // Generate a random question index
   currentQuestionIndex = random(0, (shuffledQuestions.length-1));
+  console.log(`current index is: ${currentQuestionIndex}`);
 
   // Display the question
   questionContainer.textContent = shuffledQuestions[currentQuestionIndex].question;
@@ -73,17 +73,21 @@ function randomQuestion() {
   }
 
   // Delete shown questions from `shuffleQuestions` array
-  shuffledQuestions.pop(currentQuestionIndex);
-
+  shuffledQuestions.splice(currentQuestionIndex, 1);
+  //console.log(`${shuffledQuestions[currentQuestionIndex].question} : is popped.`);
   console.log(`Length of ShuffledQuestions after one question is displayed: ${shuffledQuestions.length}`);
 }
 
 function finishSession() {
-  // Clear previous answers
+  // Clear previous question and answers
   questionContainer.innerHTML = '';
   answersContainer.innerHTML = '';
+
   messageContainer.textContent = "Well done! You've completed all the questions.";
-  console.log("Finish");
+
+  if (nextButton) {
+    nextButton.remove();
+  }
 }
 
 randomQuestion();
