@@ -34,7 +34,9 @@ function random(min, max) {
 
 function handleAnswerClick(event) {
   const selectedAnswer = event.target.textContent;
+  console.log(`target.textContent - ${selectedAnswer}`);
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
+  console.log(`correct answer - ${currentQuestion.correctAnswer}`);
   if (selectedAnswer === currentQuestion.correctAnswer) {
     // This line adds the correct class to the button that was clicked
     event.target.classList.add("correct");
