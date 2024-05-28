@@ -6,20 +6,38 @@ let currentQuestionIndex;
 
 const questions = [
   { 
-    question: "What is the capital of France?", 
-    answers: ["Berlin", "Madrid", "Paris", "Rome"], 
-    correctAnswer: "Paris"
+    question: "Whenever I go to the old part of a city, I like to ________ all the shops selling antiques.", 
+    answers: ["examine", "search", "check", "explore"], 
+    correctAnswer: "explore"
   },
   {
-    question: "What is 2 + 2?",
-    answers: ["3", "4", "5", "6"],
-    correctAnswer: "4"
+    question: "There was no fixed agenda for that particular day as it was to be regarded simply as a ________ meeting.",
+    answers: ["possible", "probable", "unplanned", "casual"],
+    correctAnswer: "casual"
   },
   {
-    question: "What is the color of the sky?", 
-    answers: ["Blue", "Green", "Red", "Yellow"], 
-    correctAnswer: "Blue" 
+    question: "The teacher asked the students to __________ their answers before submitting the test.", 
+    answers: ["look", "review", "correct", "fix"], 
+    correctAnswer: "review" 
   },
+  {
+    question: "She loves to __________ in her favorite book during rainy days.", 
+    answers: ["read", "play", "sleep", "watch"], 
+    correctAnswer: "read" 
+  },
+  /*
+  To complete the process efficiently, it's essential to follow each step in the correct __________.
+  (a) way
+  (b) sequence
+  (c) manner
+  (d) fashion
+
+  The artist was known for her ability to ________ emotions through her paintings.
+  (a) display
+  (b) convey
+  (c) show
+  (d) express
+  */
 ];
 
 // copy questions array to a temporary array
