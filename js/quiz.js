@@ -1,7 +1,7 @@
 const questionContainer = document.querySelector(".question-container");
 const answersContainer = document.querySelector(".answers-container");
 const messageContainer = document.querySelector(".message-container");
-const nextButton = document.querySelector(".next");
+const nextButton = document.querySelector(".next-btn");
 let currentQuestionIndex;
 
 const questions = [
