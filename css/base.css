@@ -7,10 +7,11 @@
 }
 
 body {
-  /*background-color: #AF7EE7;*/
   background: rgb(39,32,82);
-  background: linear-gradient(0deg, rgba(39,32,82,1) 0%, rgba(146,122,255,1) 65%, rgba(175,126,231,1) 87%);  /*margin: 30px auto;*/
-  font-family: "Poppins", sans-serif;
+  /*
+  background: linear-gradient(0deg, rgba(39,32,82,1) 0%, rgba(146,122,255,1) 65%, rgba(175,126,231,1) 87%);
+  */
+  background: linear-gradient(0deg, rgba(39,32,82,1) 0%, rgba(146,122,255,1) 64%, rgba(175,126,231,1) 96%);  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
   height: 100vh;
@@ -22,19 +23,10 @@ body {
 .main-container {
   display: flex;
   flex-flow: column;
-
   background-color: #FCFCFE;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: auto;
-
-  /*background-image: 
-    url(../img/lamp.png),
-    url(../img/flowers.png);
-  background-repeat: no-repeat;
-  background-position:
-    top left,
-    bottom right;*/
 }
 
 h1 {
@@ -63,14 +55,17 @@ h1 {
   align-self: center;
 }
 
-.answer-btn {
+.answer-btn,
+.next-btn {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+  font-size: inherit;
   background-color: #ffffff;
   border-radius: 25px;
   border: none;
   border-bottom: 1px solid #D8D5EA;
+  cursor: pointer;
   position: relative;
   width: 100%;
   height: 50px;
@@ -80,7 +75,8 @@ h1 {
   transition: transform 0.2s;
 }
 
-.answer-btn::before {
+.answer-btn::before,
+.next-btn::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -93,31 +89,27 @@ h1 {
   left: 0px;
 }
 
-.answer-btn:hover {
+.answer-btn:hover,
+.next-btn:hover {
   transform: scale(1.05);
 }
 
-.answer-btn:active {
+.answer-btn:active,
+.next-btn:active {
   transform: scale(1);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 
   0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn {
-  background-color: #927AFF;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin: 5px 0;
-  cursor: pointer;
-  border-radius: 5px;
+.next-btn {
+  background-color: #D8D5EA;
+  margin-top: 10px;
+  font-weight: 600;
+  font-style: italic;
 }
 
-.next {
-  width: 50%;
-  align-self: center;
-  margin: 10px;
-
+.next-btn::before {
+  box-shadow: 0 5px 0 0 #beb9da;
 }
 
 .correct {
