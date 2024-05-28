@@ -34,23 +34,24 @@ function random(min, max) {
 
 function handleAnswerClick(event) {
   const selectedAnswer = event.target.textContent;
-  console.log(`Selected Answer - ${selectedAnswer}`);
 
-  const currentQuestion = shuffledQuestions[currentQuestionIndex];
+  // Assign currently showing question and answer set to a temp object.
+  const currentQuestionSet = shuffledQuestions[currentQuestionIndex];
 
-  console.log(`correct answer - ${currentQuestion.correctAnswer}`);
-  if (selectedAnswer === currentQuestion.correctAnswer) {
-    // This line adds the correct class to the button that was clicked
+  if (selectedAnswer === currentQuestionSet.correctAnswer) {
+    // Adds the `correct` class to the button that was clicked
     event.target.classList.add("correct");
-    // Show random correct message
+    // Show random correct message drawn from `correctMessages` array
     messageContainer.textContent = correctMessages[random(0, correctMessages.length-1)];
   } else {
+    // Adds the `incorrect` class to the button that was clicked
     event.target.classList.add("incorrect");
     messageContainer.textContent = wrongMessages[random(0, wrongMessages.length-1)];
   }
 }
 
 function nextButtonClick(event) {
+  // spliceQuestion() is called, if there is still a question left in `shuffledQuestions`
     shuffledQuestions.length === 0 ? finishSession() : spliceQuestion();
 }
 
@@ -60,14 +61,14 @@ function randomQuestion() {
 
   // Generate a random question index
   currentQuestionIndex = random(0, (shuffledQuestions.length-1));
-  console.log(`current index is: ${currentQuestionIndex}`);
 
   // Display the question
   questionContainer.textContent = shuffledQuestions[currentQuestionIndex].question;
-  console.log(`Length of ShuffledQuestions: ${shuffledQuestions.length}`);
+
+  // Copy `answers` array from `shuffledQuestions` to a temporary array
+  let tempAnswersArray = [...shuffledQuestions[currentQuestionIndex].answers];
 
   // Display the answers
-  let tempAnswersArray = shuffledQuestions[currentQuestionIndex].answers;
   for (let answer of tempAnswersArray) {
     const answerButton = document.createElement("button");
     answerButton.setAttribute("class", "answer-btn");
@@ -75,29 +76,30 @@ function randomQuestion() {
     answerButton.addEventListener("click", handleAnswerClick);
     answersContainer.append(answerButton);
   }
-  console.log(`Correct answer is: ${shuffledQuestions[currentQuestionIndex].correctAnswer}`);
 }
 
 function spliceQuestion() {
   // Delete shown questions from `shuffleQuestions` array
   shuffledQuestions.splice(currentQuestionIndex, 1);
-  console.log(`Length of ShuffledQuestions after spliced: ${shuffledQuestions.length}`);
 
+  // randomQestion() is called again, if there is still a question left after the splice()
   shuffledQuestions.length === 0 ? finishSession() : randomQuestion();
 }
 
 function finishSession() {
-  // Clear previous question and answers
+  // Clear previous question and answers; then show the complete message
   questionContainer.innerHTML = '';
   answersContainer.innerHTML = '';
 
   messageContainer.textContent = "Well done! You've completed all the questions.";
 
+  // Remove Next button from display
   if (nextButton) {
     nextButton.remove();
   }
 }
 
+// Calls `randomQuestion()` at the start
 randomQuestion();
 
 nextButton.addEventListener("click", nextButtonClick);
