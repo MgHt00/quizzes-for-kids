@@ -34,8 +34,10 @@ function random(min, max) {
 
 function handleAnswerClick(event) {
   const selectedAnswer = event.target.textContent;
-  console.log(`target.textContent - ${selectedAnswer}`);
+  console.log(`Selected Answer - ${selectedAnswer}`);
+
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
+
   console.log(`correct answer - ${currentQuestion.correctAnswer}`);
   if (selectedAnswer === currentQuestion.correctAnswer) {
     // This line adds the correct class to the button that was clicked
@@ -49,7 +51,7 @@ function handleAnswerClick(event) {
 }
 
 function nextButtonClick(event) {
-    shuffledQuestions.length === 0 ? finishSession() : randomQuestion();
+    shuffledQuestions.length === 0 ? finishSession() : spliceQuestion();
 }
 
 function randomQuestion() {
@@ -73,11 +75,15 @@ function randomQuestion() {
     answerButton.addEventListener("click", handleAnswerClick);
     answersContainer.append(answerButton);
   }
+  console.log(`Correct answer is: ${shuffledQuestions[currentQuestionIndex].correctAnswer}`);
+}
 
+function spliceQuestion() {
   // Delete shown questions from `shuffleQuestions` array
   shuffledQuestions.splice(currentQuestionIndex, 1);
-  //console.log(`${shuffledQuestions[currentQuestionIndex].question} : is popped.`);
-  console.log(`Length of ShuffledQuestions after one question is displayed: ${shuffledQuestions.length}`);
+  console.log(`Length of ShuffledQuestions after spliced: ${shuffledQuestions.length}`);
+
+  shuffledQuestions.length === 0 ? finishSession() : randomQuestion();
 }
 
 function finishSession() {
