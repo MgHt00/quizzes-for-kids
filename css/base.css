@@ -90,7 +90,7 @@ h1 {
 }
 
 .answer-btn:hover,
-.next-btn:hover {
+.next-btn:not([disabled]):hover{
   transform: scale(1.05);
 }
 
@@ -110,6 +110,14 @@ h1 {
 
 .next-btn::before {
   box-shadow: 0 5px 0 0 #beb9da;
+}
+
+.next-btn.disabled {
+  background-color: #f0f0f1;
+}
+
+.next-btn.disabled::before {
+  box-shadow: 0 5px 0 0 #f0f0f1;
 }
 
 .correct {

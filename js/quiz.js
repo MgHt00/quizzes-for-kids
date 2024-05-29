@@ -59,8 +59,13 @@ function handleAnswerClick(event) {
   if (selectedAnswer === currentQuestionSet.correctAnswer) {
     // Adds the `correct` class to the button that was clicked
     event.target.classList.add("correct");
-    // Enable `nextButton` and add listener
-    nextButton.disabled = false;
+    
+    // Simulate re-enabling the button after 0.3 seconds
+    setTimeout(() => {
+        nextButton.disabled = false;
+        nextButton.classList.remove("disabled");
+    }, 300);
+    
     nextButton.addEventListener("click", nextButtonClick);
     // Show random correct message drawn from `correctMessages` array
     messageContainer.textContent = correctMessages[random(0, correctMessages.length-1)];
@@ -77,8 +82,12 @@ function nextButtonClick(event) {
 }
 
 function randomQuestion() {
-  // Disable `nextButton`
-  nextButton.disabled = true;
+  // Simulate disabling the button after 0.3 seconds 
+  // and add `disabled` class
+  setTimeout(() => {
+    nextButton.disabled = true;
+    nextButton.classList.add("disabled");
+  }, 300);
   // Clear previous answers
   answersContainer.innerHTML = '';
 
