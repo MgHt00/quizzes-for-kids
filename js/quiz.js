@@ -59,6 +59,9 @@ function handleAnswerClick(event) {
   if (selectedAnswer === currentQuestionSet.correctAnswer) {
     // Adds the `correct` class to the button that was clicked
     event.target.classList.add("correct");
+    // Enable `nextButton` and add listener
+    nextButton.disabled = false;
+    nextButton.addEventListener("click", nextButtonClick);
     // Show random correct message drawn from `correctMessages` array
     messageContainer.textContent = correctMessages[random(0, correctMessages.length-1)];
   } else {
@@ -74,6 +77,8 @@ function nextButtonClick(event) {
 }
 
 function randomQuestion() {
+  // Disable `nextButton`
+  nextButton.disabled = true;
   // Clear previous answers
   answersContainer.innerHTML = '';
 
@@ -94,6 +99,7 @@ function randomQuestion() {
     answerButton.addEventListener("click", handleAnswerClick);
     answersContainer.append(answerButton);
   }
+
 }
 
 function spliceQuestion() {
@@ -119,5 +125,7 @@ function finishSession() {
 
 // Calls `randomQuestion()` at the start
 randomQuestion();
+// Disable `nextButton` at the start
+nextButton.disabled = true;
 
-nextButton.addEventListener("click", nextButtonClick);
+//nextButton.addEventListener("click", nextButtonClick);
