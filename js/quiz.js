@@ -59,6 +59,12 @@ function handleAnswerClick(event) {
   if (selectedAnswer === currentQuestionSet.correctAnswer) {
     // Adds the `correct` class to the button that was clicked
     event.target.classList.add("correct");
+
+    // Disable all buttons
+    const allButtons = document.querySelectorAll(".answer-btn");
+    for (let button of allButtons) {
+      button.disabled = true;
+    }
     
     // Simulate re-enabling the button after 0.3 seconds
     setTimeout(() => {
