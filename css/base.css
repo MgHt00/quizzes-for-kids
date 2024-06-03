@@ -8,10 +8,8 @@
 
 body {
   background: rgb(39,32,82);
-  /*
-  background: linear-gradient(0deg, rgba(39,32,82,1) 0%, rgba(146,122,255,1) 65%, rgba(175,126,231,1) 87%);
-  */
-  background: linear-gradient(0deg, rgba(39,32,82,1) 0%, rgba(146,122,255,1) 64%, rgba(175,126,231,1) 96%);  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #AF7EE7 0%, #927AFF 17%, #272052 99%);
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
   height: 100vh;
@@ -64,14 +62,15 @@ h1 {
   background-color: #ffffff;
   border-radius: 25px;
   border: none;
-  border-bottom: 1px solid #D8D5EA;
+  border-bottom: 1px solid rgb(216, 213, 234);
+  border-top: 1px solid rgba(216, 213, 234, 0.2);
   cursor: pointer;
   position: relative;
   width: 100%;
   height: 50px;
   margin-bottom: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 
-              0px 4px 16px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 
+              0px 4px 16px rgba(0, 0, 0, 0.1);*/
   transition: transform 0.2s;
 }
 
@@ -122,12 +121,18 @@ h1 {
 
 .correct {
   background-color: #7EC665;
-  color: white;
+}
+
+.correct::before {
+  box-shadow: 0 5px 0 0 #54A239;
 }
 
 .incorrect {
   background-color: #FC6049;
-  color: white;
+}
+
+.incorrect::before {
+  box-shadow: 0 5px 0 0 #CA4431;
 }
 
 .footer {
