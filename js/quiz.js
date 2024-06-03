@@ -1,8 +1,10 @@
 const questionContainer = document.querySelector(".question-container");
 const answersContainer = document.querySelector(".answers-container");
+const paginationContainer = document.querySelector(".pagination-container");
 const messageContainer = document.querySelector(".message-container");
 const nextButton = document.querySelector(".next-btn");
 let currentQuestionIndex;
+let currentQuestionNo = 1;
 
 const questions = [
   { 
@@ -50,6 +52,51 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function randomQuestion() {
+  // Simulate disabling the button after 0.3 seconds 
+  // and add `disabled` class
+  setTimeout(() => {
+    nextButton.disabled = true;
+    nextButton.classList.add("disabled");
+  }, 300);
+  // Clear previous answers
+  answersContainer.innerHTML = '';
+
+  // Generate a random question index
+  currentQuestionIndex = random(0, (shuffledQuestions.length-1));
+
+  // Display the question
+  questionContainer.textContent = shuffledQuestions[currentQuestionIndex].question;
+
+  // Copy `answers` array from `shuffledQuestions` to a temporary array
+  let tempAnswersArray = [...shuffledQuestions[currentQuestionIndex].answers];
+
+  // Display the answers
+  for (let answer of tempAnswersArray) {
+    const answerButton = document.createElement("button");
+    answerButton.setAttribute("class", "answer-btn");
+    answerButton.textContent = answer;
+    answerButton.addEventListener("click", handleAnswerClick);
+    answersContainer.append(answerButton);
+  }
+}
+
+function DisplayPagination() {
+    // Clear previous pagination (if needed)
+    paginationContainer.innerHTML = '';
+    // Display pagination
+    for (let i = 1; i <= questions.length; i++) {
+      const pagination = document.createElement("div");
+      pagination.setAttribute("class", "pagination");
+      // Add 'active' class to show where we are right now with the pagination
+      if (i === currentQuestionNo) {
+        pagination.classList.add("active");
+      }
+      paginationContainer.append(pagination);
+    }
+    currentQuestionNo++
+}
+
 function handleAnswerClick(event) {
   const selectedAnswer = event.target.textContent;
 
@@ -84,38 +131,10 @@ function handleAnswerClick(event) {
 
 function nextButtonClick(event) {
   // spliceQuestion() is called, if there is still a question left in `shuffledQuestions`
+    DisplayPagination();
     shuffledQuestions.length === 0 ? finishSession() : spliceQuestion();
 }
 
-function randomQuestion() {
-  // Simulate disabling the button after 0.3 seconds 
-  // and add `disabled` class
-  setTimeout(() => {
-    nextButton.disabled = true;
-    nextButton.classList.add("disabled");
-  }, 300);
-  // Clear previous answers
-  answersContainer.innerHTML = '';
-
-  // Generate a random question index
-  currentQuestionIndex = random(0, (shuffledQuestions.length-1));
-
-  // Display the question
-  questionContainer.textContent = shuffledQuestions[currentQuestionIndex].question;
-
-  // Copy `answers` array from `shuffledQuestions` to a temporary array
-  let tempAnswersArray = [...shuffledQuestions[currentQuestionIndex].answers];
-
-  // Display the answers
-  for (let answer of tempAnswersArray) {
-    const answerButton = document.createElement("button");
-    answerButton.setAttribute("class", "answer-btn");
-    answerButton.textContent = answer;
-    answerButton.addEventListener("click", handleAnswerClick);
-    answersContainer.append(answerButton);
-  }
-
-}
 
 function spliceQuestion() {
   // Delete shown questions from `shuffleQuestions` array
@@ -126,10 +145,11 @@ function spliceQuestion() {
 }
 
 function finishSession() {
-  // Clear previous question and answers; then show the complete message
-  questionContainer.innerHTML = '';
-  answersContainer.innerHTML = '';
-
+  // Clear previous question, answers, and pagination; then show the complete message
+  questionContainer.remove();
+  answersContainer.remove();
+  paginationContainer.remove();
+  
   messageContainer.textContent = "Well done! You've completed all the questions.";
 
   // Remove Next button from display
@@ -138,9 +158,9 @@ function finishSession() {
   }
 }
 
-// Calls `randomQuestion()` at the start
+// Calls initial functions at the start
 randomQuestion();
+DisplayPagination();
+
 // Disable `nextButton` at the start
 nextButton.disabled = true;
-
-//nextButton.addEventListener("click", nextButtonClick);
