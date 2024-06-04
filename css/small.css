@@ -1,0 +1,29 @@
+.main-container {
+  display: flex;
+  flex-flow: column;
+  width: 98%;
+  max-width: 321px;
+  padding: 18px;
+  margin: auto;
+}
+
+.main-container {
+  background-color: #FCFCFE;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  padding: 12px 0px;
+  font-size: 30px;
+}
+
+.answers-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.footer img {
+  width: 25%;
+}
