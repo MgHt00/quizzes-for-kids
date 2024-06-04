@@ -1,0 +1,29 @@
+.main-container {
+  display: flex;
+  flex-flow: column;
+  width: 98%;
+  max-width: 618px;
+  padding: 18px 28px;
+  margin: auto;
+}
+
+h1 {
+  padding: 10px 10px;
+  font-size: 38px;
+}
+
+section#controls,
+section#next {
+  width: 316px;
+  margin: 0 auto;
+}
+
+.answers-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.footer img {
+  width: 15%;
+}

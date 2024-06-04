@@ -19,12 +19,9 @@ body {
 }
 
 .main-container {
-  display: flex;
-  flex-flow: column;
   background-color: #FCFCFE;
   border-radius: 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin: auto;
 }
 
 h1 {
@@ -32,20 +29,12 @@ h1 {
   font-weight: 400;
   font-style: normal;
   text-align: center;
-  padding: 10px 10px 20px 10px;
-  line-height: 1.2;
 }
 
 .question-container {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
-}
-
-.answers-container {
-  display: flex;
-  flex-direction: column;
-  padding-top: 15px;
 }
 
 .message-container {
@@ -157,8 +146,6 @@ h1 {
 .footer {
   display: flex;
   justify-content: center;
+  padding-top: 10px;
 }
 
-.footer img {
-  width: 25%;
-}
