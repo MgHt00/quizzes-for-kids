@@ -1,0 +1,22 @@
+[
+  { 
+    "question": "Whenever I go to the old part of a city, I like to ________ all the shops selling antiques.", 
+    "answers": ["examine", "search", "check", "explore"], 
+    "correctAnswer": "explore"
+  },
+  {
+    "question": "There was no fixed agenda for that particular day as it was to be regarded simply as a ________ meeting.",
+    "answers": ["possible", "probable", "unplanned", "casual"],
+    "correctAnswer": "casual"
+  },
+  {
+    "question": "The teacher asked the students to __________ their answers before submitting the test.", 
+    "answers": ["look", "review", "correct", "fix"], 
+    "correctAnswer": "review" 
+  },
+  {
+    "question": "She loves to __________ in her favorite book during rainy days.", 
+    "answers": ["read", "play", "sleep", "watch"], 
+    "correctAnswer": "read" 
+  }
+]

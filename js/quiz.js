@@ -5,45 +5,8 @@ const messageContainer = document.querySelector(".message-container");
 const nextButton = document.querySelector(".next-btn");
 let currentQuestionIndex;
 let currentQuestionNo = 1;
-
-const questions = [
-  { 
-    question: "Whenever I go to the old part of a city, I like to ________ all the shops selling antiques.", 
-    answers: ["examine", "search", "check", "explore"], 
-    correctAnswer: "explore"
-  },
-  {
-    question: "There was no fixed agenda for that particular day as it was to be regarded simply as a ________ meeting.",
-    answers: ["possible", "probable", "unplanned", "casual"],
-    correctAnswer: "casual"
-  },
-  {
-    question: "The teacher asked the students to __________ their answers before submitting the test.", 
-    answers: ["look", "review", "correct", "fix"], 
-    correctAnswer: "review" 
-  },
-  {
-    question: "She loves to __________ in her favorite book during rainy days.", 
-    answers: ["read", "play", "sleep", "watch"], 
-    correctAnswer: "read" 
-  },
-  /*
-  To complete the process efficiently, it's essential to follow each step in the correct __________.
-  (a) way
-  (b) sequence
-  (c) manner
-  (d) fashion
-
-  The artist was known for her ability to ________ emotions through her paintings.
-  (a) display
-  (b) convey
-  (c) show
-  (d) express
-  */
-];
-
-// copy questions array to a temporary array
-let shuffledQuestions = [...questions];
+let questions = [];
+let shuffledQuestions = [];
 
 const correctMessages = ["Fantastic!", "Awesome!", "Brilliant!", "Great job!", "Excellent!", "Superb!", "Outstanding!"];
 const wrongMessages = ["Almost there!", "Keep going!", "Nice effort!", "Keep practicing!", "Good try!"];
@@ -158,9 +121,25 @@ function finishSession() {
   }
 }
 
-// Calls initial functions at the start
-randomQuestion();
-DisplayPagination();
+// Fetch questions from JSON file
+fetch('assets/questions.json')
+//  The fetch function returns a promise that resolves to the response object 
+//  representing the HTTP response.
+  .then(response => response.json())
+  //  The first .then method takes the response object returned by the fetch request  
+  //  and converts it to JSON using the json() method. This method also returns a promise 
+  //  that resolves to the JSON object.
+  .then(data => {
+    // The second .then method takes the JSON object (now stored in the data variable) 
+    // and assigns it to the questions variable.
+    questions = data;
+    // Copy questions array to shuffledQuestions
+    shuffledQuestions = [...questions]; 
+    // Calls initial functions
+    randomQuestion();
+    DisplayPagination();
+  })
+  .catch(error => console.error('Error loading questions:', error));
 
 // Disable `nextButton` at the start
 nextButton.disabled = true;
