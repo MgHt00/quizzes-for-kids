@@ -149,3 +149,13 @@ h1 {
   padding-top: 10px;
 }
 
+/* 
+By default, an <a> tag is an inline element, which can affect the alignment of
+its contents. To center the <a> tag (and thus the image inside it) within the flex container, 
+you can make the <a> tag a flex container as well and apply the same centering styles to it.
+*/
+.footer a {
+  display: flex;
+  justify-content: center;
+}
+
