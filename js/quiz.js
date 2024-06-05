@@ -1,3 +1,4 @@
+const headerContainer = document.querySelector("#header-container");
 const questionContainer = document.querySelector(".question-container");
 const answersContainer = document.querySelector(".answers-container");
 const paginationContainer = document.querySelector(".pagination-container");
@@ -108,7 +109,8 @@ function spliceQuestion() {
 }
 
 function finishSession() {
-  // Clear previous question, answers, and pagination; then show the complete message
+  // Clear header, previous question, answers, and pagination; then show the complete message
+  headerContainer.remove();
   questionContainer.remove();
   answersContainer.remove();
   paginationContainer.remove();
