@@ -1,4 +1,4 @@
-let totalNumOfQuestion = 2; // Set the total num of questions to show in the quiz.
+let totalNumOfQuestion = 4; // Set the total num of questions to show in the quiz.
 const headerContainer = document.querySelector("#header-container");
 const questionContainer = document.querySelector(".question-container");
 const answersContainer = document.querySelector(".answers-container");
@@ -129,7 +129,7 @@ function finishSession() {
 }
 
 // Fetch questions from JSON file
-fetch('assets/questions.json')
+fetch('assets/data/questions.json')
 //  The fetch function returns a promise that resolves to the response object 
 //  representing the HTTP response.
   .then(response => response.json())
