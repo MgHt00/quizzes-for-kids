@@ -1,13 +1,14 @@
+let totalNumOfQuestion = 2; // Set the total num of questions to show in the quiz.
 const headerContainer = document.querySelector("#header-container");
 const questionContainer = document.querySelector(".question-container");
 const answersContainer = document.querySelector(".answers-container");
 const paginationContainer = document.querySelector(".pagination-container");
 const messageContainer = document.querySelector(".message-container");
 const nextButton = document.querySelector(".next-btn");
-let currentQuestionIndex;
-let currentQuestionNo = 1;
-let questions = [];
-let shuffledQuestions = [];
+let currentQuestionIndex; // Index to match the question and the answers.
+let currentQuestionNo = 1; // For paginations and to contol the number of questions to be shown.
+let questions = []; // Data will be fetch from JSON
+let shuffledQuestions = []; // To copy the questions array to manipulate without touching the original question array.
 
 const correctMessages = ["Fantastic!", "Awesome!", "Brilliant!", "Great job!", "Excellent!", "Superb!", "Outstanding!"];
 const wrongMessages = ["Almost there!", "Keep going!", "Nice effort!", "Keep practicing!", "Good try!"];
@@ -49,7 +50,7 @@ function DisplayPagination() {
     // Clear previous pagination (if needed)
     paginationContainer.innerHTML = '';
     // Display pagination
-    for (let i = 1; i <= questions.length; i++) {
+    for (let i = 1; i <= totalNumOfQuestion; i++) {
       const pagination = document.createElement("div");
       pagination.setAttribute("class", "pagination");
       // Add 'active' class to show where we are right now with the pagination
@@ -58,7 +59,7 @@ function DisplayPagination() {
       }
       paginationContainer.append(pagination);
     }
-    currentQuestionNo++
+    currentQuestionNo++;
 }
 
 function handleAnswerClick(event) {
@@ -95,8 +96,12 @@ function handleAnswerClick(event) {
 
 function nextButtonClick(event) {
   // spliceQuestion() is called, if there is still a question left in `shuffledQuestions`
+    if ((currentQuestionNo <= totalNumOfQuestion) && (shuffledQuestions.length !== 0)) {
+      spliceQuestion();
+    } else {
+      finishSession();
+    }
     DisplayPagination();
-    shuffledQuestions.length === 0 ? finishSession() : spliceQuestion();
 }
 
 
