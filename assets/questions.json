@@ -18,5 +18,15 @@
     "question": "She loves to __________ in her favorite book during rainy days.", 
     "answers": ["read", "play", "sleep", "watch"], 
     "correctAnswer": "read" 
+  },
+  {
+    "question": "To complete the process efficiently, it's essential to follow each step in the correct __________.", 
+    "answers": ["way", "sequence", "manner", "fashion"], 
+    "correctAnswer": "sequence" 
+  },
+  {
+    "question": "The artist was known for her ability to ________ emotions through her paintings.", 
+    "answers": ["display", "convey", "show", "express"], 
+    "correctAnswer": "convey" 
   }
 ]
