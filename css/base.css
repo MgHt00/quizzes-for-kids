@@ -1,4 +1,41 @@
 @import url(fonts.css);
+html {
+  --body-background-fallback: rgb(39,32,82);
+  --body-background-deg: 180deg;
+  --body-background-gradient1-color: #AF7EE7;
+  --body-background-graident1-stop: 0%;
+  --body-background-gradient2-color: #927AFF;
+  --body-background-graident2-stop: 17%;
+  --body-background-gradient3-color: #272052;
+  --body-background-graident3-stop: 99%;
+
+  --main-font: "Poppins", sans-serif;
+  --main-font-weight: 400;
+
+  --main-container-background: #FCFCFE;
+
+  --heading-font: "Pacifico", cursive;
+  --heading-weight: 400;
+
+  --btn-background: #ffffff;
+  --btn-border-border: rgb(216, 213, 234);
+  --btn-border-top: rgba(216, 213, 234, 0.2);
+  --btn-before-shadow: #D8D5EA;
+
+  --next-btn-background: #D8D5EA;
+  --next-btn-before-shadow: #beb9da;
+  --next-btn-disabled-background: #f0f0f1;
+  --next-btn-disabled-before-shadow: #f0f0f1;
+
+  --correct-background: #7EC665;
+  --correct-before-shadow: #54A239;
+  --incorrect-background: #FC6049;
+  --incorrect-before-shadow: #CA4431;
+
+  --pagination-background: #D9D9D9;
+  --pagination-active: #BEB9DA;
+}
+
 /* CSS RESET */
 * {
   margin: 0;
@@ -7,10 +44,15 @@
 }
 
 body {
-  background: rgb(39,32,82);
-  background: linear-gradient(180deg, #AF7EE7 0%, #927AFF 17%, #272052 99%);
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  background: var(--body-background-fallback, rgb(39,32,82));
+  background: linear-gradient(
+    var(--body-background-deg, 180deg), 
+    var(--body-background-gradient1-color, #AF7EE7) var(--body-background-graident1-stop, 0%),
+    var(--body-background-gradient2-color, #927AFF) var(--body-background-graident1-stop, 17%),
+    var(--body-background-gradient3-color, #272052) var(--body-background-graident3-stop, 99%)
+    );
+  font-family: var(--main-font,"Poppins", sans-serif);
+  font-weight: var(--main-font-weight, 400);
   font-style: normal;
   height: 100vh;
   display: flex;
@@ -19,22 +61,16 @@ body {
 }
 
 .main-container {
-  background-color: #FCFCFE;
+  background-color: var(--main-container-background,#FCFCFE);
   border-radius: 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-  font-family: "Pacifico", cursive;
-  font-weight: 400;
+  font-family: var(--heading-font, "Pacifico", cursive);
+  font-weight: var(--heading-weight, 400);
   font-style: normal;
   text-align: center;
-}
-
-.question-container {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .message-container {
@@ -44,22 +80,20 @@ h1 {
 
 .answer-btn,
 .next-btn {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-family: inherit;
+  font-weight: inherit;
   font-style: normal;
   font-size: inherit;
-  background-color: #ffffff;
+  background-color: var(--btn-background, #ffffff);
   border-radius: 25px;
   border: none;
-  border-bottom: 1px solid rgb(216, 213, 234);
-  border-top: 1px solid rgba(216, 213, 234, 0.2);
+  border-bottom: 1px solid var(--btn-border-border, rgb(216, 213, 234));
+  border-top: 1px solid var(--btn-border-top, rgba(216, 213, 234, 0.2));
   cursor: pointer;
   position: relative;
   width: 100%;
   height: 50px;
   margin-bottom: 10px;
-  /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 
-              0px 4px 16px rgba(0, 0, 0, 0.1);*/
   transition: transform 0.2s;
 }
 
@@ -72,7 +106,7 @@ h1 {
   background-color: transparent;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  box-shadow: 0 5px 0 0 #D8D5EA;
+  box-shadow: 0 5px 0 0 var(--btn-before-shadow, #D8D5EA);
   top: 0px;
   left: 0px;
 }
@@ -90,38 +124,38 @@ h1 {
 }
 
 .next-btn {
-  background-color: #D8D5EA;
+  background-color: var(--next-btn-background, #D8D5EA);
   margin-top: 10px;
   font-weight: 600;
   font-style: italic;
 }
 
 .next-btn::before {
-  box-shadow: 0 5px 0 0 #beb9da;
+  box-shadow: 0 5px 0 0 var(--next-btn-before-shadow, #beb9da);
 }
 
 .next-btn.disabled {
-  background-color: #f0f0f1;
+  background-color: var(--next-btn-disabled-background, #f0f0f1);
 }
 
 .next-btn.disabled::before {
-  box-shadow: 0 5px 0 0 #f0f0f1;
+  box-shadow: 0 5px 0 0 var(--next-btn-disabled-before-shadow, #f0f0f1);
 }
 
 .correct {
-  background-color: #7EC665;
+  background-color: var(--correct-background, #7EC665);
 }
 
 .correct::before {
-  box-shadow: 0 5px 0 0 #54A239;
+  box-shadow: 0 5px 0 0 var(--correct-before-shadow, #54A239);
 }
 
 .incorrect {
-  background-color: #FC6049;
+  background-color: var(--incorrect-background, #FC6049);
 }
 
 .incorrect::before {
-  box-shadow: 0 5px 0 0 #CA4431;
+  box-shadow: 0 5px 0 0 var(--incorrect-before-shadow, #CA4431);
 }
 
 .pagination-container {
@@ -135,12 +169,12 @@ h1 {
 .pagination {
   width: 14px;
   height: 14px;
-  background: #D9D9D9;
+  background: var(--pagination-background, #D9D9D9);
   border-radius: 50%;
 }
 
 .pagination.active {
-  background: #BEB9DA;
+  background: var(--pagination-active, #BEB9DA);
 }
 
 .footer {
